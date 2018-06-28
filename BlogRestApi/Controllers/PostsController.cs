@@ -4,7 +4,10 @@ using System.Fabric;
 using System.Fabric.Query;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Common.Models;
+using Common.Requests;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -36,20 +39,9 @@ namespace BlogRestApi.Controllers
             Uri serviceName = BlogRestApi.GetBlogDataServiceName(this.serviceContext);
             Uri proxyAddress = this.GetProxyAddress(serviceName);
 
-            string proxyUrl =
-                    $"{proxyAddress}/api/Posts";
-            List<string> result = new List<string>();
+            ServicePartitionList partitions = await this.fabricClient.QueryManager.GetPartitionListAsync(serviceName);
 
-            using (HttpResponseMessage response = await this.httpClient.GetAsync(proxyUrl))
-            {
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    result.AddRange(JsonConvert.DeserializeObject<List<string>>(await response.Content.ReadAsStringAsync()));
-                }
-            }
-            /*ServicePartitionList partitions = await this.fabricClient.QueryManager.GetPartitionListAsync(serviceName);
-
-            List<KeyValuePair<string, int>> result = new List<KeyValuePair<string, int>>();
+            List<KeyValuePair<string, Post>> result = new List<KeyValuePair<string, Post>>();
 
             foreach (Partition partition in partitions)
             {
@@ -63,24 +55,27 @@ namespace BlogRestApi.Controllers
                         continue;
                     }
 
-                    result.AddRange(JsonConvert.DeserializeObject<List<KeyValuePair<string, int>>>(await response.Content.ReadAsStringAsync()));
+                    result.AddRange(JsonConvert.DeserializeObject<List<KeyValuePair<string, Post>>>(await response.Content.ReadAsStringAsync()));
                 }
             }
-            */
 
             return this.Json(result);
         }
         
         // POST: api/Posts
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody]string message)
+        public async Task<IActionResult> Create([FromBody]PostsRequest request)
         {
             Uri serviceName = BlogRestApi.GetBlogDataServiceName(this.serviceContext);
             Uri proxyAddress = this.GetProxyAddress(serviceName);
-            long partitionKey = this.GetPartitionKey(message);
-            string proxyUrl = $"{proxyAddress}/api/Posts?PartitionKey={partitionKey}&PartitionKind=Int64Range&message={message}";
+            long partitionKey = this.GetPartitionKey(request.message);
+            string proxyUrl = $"{proxyAddress}/api/Posts?PartitionKey={partitionKey}&PartitionKind=Int64Range";
+            var postRequest = JsonConvert.SerializeObject(request);
+            var buffer = System.Text.Encoding.UTF8.GetBytes(postRequest);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            using (HttpResponseMessage response = await this.httpClient.DeleteAsync(proxyUrl))
+            using (HttpResponseMessage response = await this.httpClient.PostAsync(proxyUrl, byteContent))
             {
                 if (response.StatusCode != System.Net.HttpStatusCode.OK)
                 {
