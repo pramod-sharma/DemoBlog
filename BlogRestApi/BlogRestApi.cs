@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Fabric;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +40,8 @@ namespace BlogRestApi
                                     .UseKestrel()
                                     .ConfigureServices(
                                         services => services
+                                            .AddSingleton<HttpClient>(new HttpClient())
+                                            .AddSingleton<FabricClient>(new FabricClient())
                                             .AddSingleton<StatelessServiceContext>(serviceContext))
                                     .UseContentRoot(Directory.GetCurrentDirectory())
                                     .UseStartup<Startup>()
@@ -48,5 +51,16 @@ namespace BlogRestApi
                     }))
             };
         }
+
+        /// <summary>
+        /// Constructs a service name for a specific poll.
+        /// Example: fabric:/VotingApplication/polls/name-of-poll
+        /// </summary>
+        /// <param name="poll"></param>
+        /// <returns></returns>
+        /*internal static Uri GetVotingDataServiceName(ServiceContext context)
+        {
+            return new Uri($"{context.CodePackageActivationContext.ApplicationName}/BlogDataService");
+        }*/
     }
 }
