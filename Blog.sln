@@ -4,8 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "Blog", "Blog\Blog.sfproj", "{C34FB7A3-76CA-4651-B5C0-98D2022D81F4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CAB25B74-7129-4CF6-AF0F-8C33B3F974D8} = {CAB25B74-7129-4CF6-AF0F-8C33B3F974D8}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogRestApi", "BlogRestApi\BlogRestApi.csproj", "{0040E770-ED54-41EC-8564-453B3C342EA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogRestApi", "BlogRestApi\BlogRestApi.csproj", "{0040E770-ED54-41EC-8564-453B3C342EA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogDataService", "BlogDataService\BlogDataService.csproj", "{CAB25B74-7129-4CF6-AF0F-8C33B3F974D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +36,14 @@ Global
 		{0040E770-ED54-41EC-8564-453B3C342EA6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0040E770-ED54-41EC-8564-453B3C342EA6}.Release|x64.ActiveCfg = Release|Any CPU
 		{0040E770-ED54-41EC-8564-453B3C342EA6}.Release|x64.Build.0 = Release|Any CPU
+		{CAB25B74-7129-4CF6-AF0F-8C33B3F974D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAB25B74-7129-4CF6-AF0F-8C33B3F974D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAB25B74-7129-4CF6-AF0F-8C33B3F974D8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CAB25B74-7129-4CF6-AF0F-8C33B3F974D8}.Debug|x64.Build.0 = Debug|Any CPU
+		{CAB25B74-7129-4CF6-AF0F-8C33B3F974D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAB25B74-7129-4CF6-AF0F-8C33B3F974D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAB25B74-7129-4CF6-AF0F-8C33B3F974D8}.Release|x64.ActiveCfg = Release|Any CPU
+		{CAB25B74-7129-4CF6-AF0F-8C33B3F974D8}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
