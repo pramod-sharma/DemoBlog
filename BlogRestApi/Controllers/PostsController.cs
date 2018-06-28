@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Fabric;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +13,20 @@ namespace BlogRestApi.Controllers
     [Route("api/Posts")]
     public class PostsController : Controller
     {
+        private readonly HttpClient httpClient;
+        private readonly FabricClient fabricClient;
+        private readonly string reverseProxyBaseUri;
+        private readonly StatelessServiceContext serviceContext;
+
+        public PostsController(HttpClient httpClient, StatelessServiceContext context, FabricClient fabricClient)
+        {
+            this.fabricClient = fabricClient;
+            this.httpClient = httpClient;
+            this.serviceContext = context;
+            this.reverseProxyBaseUri = Environment.GetEnvironmentVariable("ReverseProxyBaseUri");
+        }
+
+
         // GET: api/Posts
         [HttpGet]
         public IEnumerable<string> Get()

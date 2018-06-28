@@ -58,9 +58,9 @@ namespace BlogRestApi
         /// </summary>
         /// <param name="poll"></param>
         /// <returns></returns>
-        /*internal static Uri GetVotingDataServiceName(ServiceContext context)
+        internal static Uri GetVotingDataServiceName(ServiceContext context)
         {
             return new Uri($"{context.CodePackageActivationContext.ApplicationName}/BlogDataService");
-        }*/
+        }
     }
 }
