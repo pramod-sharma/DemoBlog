@@ -11,7 +11,7 @@ namespace Common.Models
         public Post()
         {
             createdAt = DateTime.Now;
-            id = new Guid();
+            id = Guid.NewGuid();
         }
 
         public string message { get; set; }

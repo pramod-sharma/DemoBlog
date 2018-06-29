@@ -20,7 +20,7 @@
                                     AzureActiveDirectory="true"
                                     ServerCertThumbprint="0123456789012345678901234567890123456789" />
   -->
-  <ClusterConnectionParameters ConnectionEndpoint="" />
+  <ClusterConnectionParameters ConnectionEndpoint="demo-blog.eastus.cloudapp.azure.com:19000" X509Credential="true" ServerCertThumbprint="93A0B1FC570E320C9833C16241B1A7C166B03D73" FindType="FindByThumbprint" FindValue="93A0B1FC570E320C9833C16241B1A7C166B03D73" StoreLocation="CurrentUser" StoreName="My" />
   <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
   <CopyPackageParameters CompressPackage="true" />
 </PublishProfile>
