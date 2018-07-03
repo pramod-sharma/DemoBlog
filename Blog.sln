@@ -14,6 +14,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogDataService", "BlogData
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{893955EB-9371-478F-AEE7-BC069CC218C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogSqlDataService", "BlogSqlDataService\BlogSqlDataService.csproj", "{C54AAD38-4A9E-4D21-B29D-3373CCE3B2FF}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6CE09D0D-519C-4CD9-BE37-9E1BAAD3913E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +58,22 @@ Global
 		{893955EB-9371-478F-AEE7-BC069CC218C5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{893955EB-9371-478F-AEE7-BC069CC218C5}.Release|x64.ActiveCfg = Release|Any CPU
 		{893955EB-9371-478F-AEE7-BC069CC218C5}.Release|x64.Build.0 = Release|Any CPU
+		{C54AAD38-4A9E-4D21-B29D-3373CCE3B2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C54AAD38-4A9E-4D21-B29D-3373CCE3B2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C54AAD38-4A9E-4D21-B29D-3373CCE3B2FF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C54AAD38-4A9E-4D21-B29D-3373CCE3B2FF}.Debug|x64.Build.0 = Debug|Any CPU
+		{C54AAD38-4A9E-4D21-B29D-3373CCE3B2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C54AAD38-4A9E-4D21-B29D-3373CCE3B2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C54AAD38-4A9E-4D21-B29D-3373CCE3B2FF}.Release|x64.ActiveCfg = Release|Any CPU
+		{C54AAD38-4A9E-4D21-B29D-3373CCE3B2FF}.Release|x64.Build.0 = Release|Any CPU
+		{6CE09D0D-519C-4CD9-BE37-9E1BAAD3913E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CE09D0D-519C-4CD9-BE37-9E1BAAD3913E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CE09D0D-519C-4CD9-BE37-9E1BAAD3913E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6CE09D0D-519C-4CD9-BE37-9E1BAAD3913E}.Debug|x64.Build.0 = Debug|Any CPU
+		{6CE09D0D-519C-4CD9-BE37-9E1BAAD3913E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CE09D0D-519C-4CD9-BE37-9E1BAAD3913E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CE09D0D-519C-4CD9-BE37-9E1BAAD3913E}.Release|x64.ActiveCfg = Release|Any CPU
+		{6CE09D0D-519C-4CD9-BE37-9E1BAAD3913E}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
